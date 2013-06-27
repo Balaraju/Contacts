@@ -1,0 +1,25 @@
+<p class = "text-info">
+  <b>First name:</b>
+  <%= @contact.first_name %>
+</p>
+
+<p>
+  <b>Last name:</b>
+  <%= @contact.last_name %>
+</p>
+
+<p>
+  <b>Email:</b>
+  <%= @contact.email %>
+</p>
+
+<p>
+  <b>Phone number:</b>
+  <%= @contact.phone_number %>
+</p>
+
+<p>
+  <b>Category</b>
+  <%= @contact.category.name if @contact.category.present? %>
+</p>
+

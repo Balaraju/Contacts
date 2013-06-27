@@ -1,0 +1,35 @@
+<table class="table">
+      <tr>
+        <th>First name</th>
+        <th>Last name</th>
+        <th>Email</th>
+        <th>Phone number</th>
+        <th>Category</th>
+        <th></th>
+        <th></th>
+      </tr>
+
+      <% @contacts.each do |contact| %>
+        <tr>
+          <td><%= link_to contact.first_name, "#contactPopupModal", :class => "contact-popup", :url => contact_path(contact.id) , "data-toggle" => "modal", :iid => contact.id %></td>
+          <td><%= contact.last_name %></td>
+          <td><%= contact.email %></td>
+          <td><%= contact.phone_number %></td>
+          <td class="success"><%= link_to contact.category.name, category_path(contact.category) if contact.category.present? %></td>
+          <td><%= link_to 'Edit', edit_contact_path(contact) %></td>
+          <td><%= link_to 'Destroy', contact, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        </tr>
+
+        <div class="modal hide" id="contactPopupModal">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">✕</button>
+            <h4><%= contact.first_name %></h4>
+            <hr/>
+            <div  id="contact-modal-body">
+
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </table>
+    
